@@ -9,13 +9,19 @@ pipeline {
         }
         stage('Build'){
             steps {
-                sh 'ps aux'
+                dir('auth-api'){
+                    sh 'docker build -t dprampup/auth:v1 .'
+                }    
             }
         }
-        /*stage('Unit test'){
-            when {false}
+        stage('Push dockerhub'){
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
+                    sh 'docker login -u $username -p $password' 
+                }
+            }
         }
-        stage('Deplyment'){
+        /*stage('Deplyment'){
             when {false}
         }*/
     }
