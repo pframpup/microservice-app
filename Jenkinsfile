@@ -17,11 +17,12 @@ pipeline {
         stage('Push dockerhub'){
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
-                    sh 'docker login -u $username -p $password' 
+                    sh 'docker login -u $username -p $password'
+                    sh 'docker push dprampup/auth:v1' 
                 }
             }
         }
-        /*stage('Deplyment'){
+        /*stage('Push'){
             when {false}
         }*/
     }
