@@ -12,11 +12,11 @@ pipeline {
                 sh 'ps aux'
             }
         }
-        stage('Unit test'){
+        /*stage('Unit test'){
             when {false}
         }
         stage('Deplyment'){
             when {false}
-        }
+        }*/
     }
 }
