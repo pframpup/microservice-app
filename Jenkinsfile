@@ -8,13 +8,15 @@ pipeline {
             }
         }
         stage('Build'){
-
+            steps {
+                sh 'ps aux'
+            }
         }
         stage('Unit test'){
-
+            when {false}
         }
         stage('Deplyment'){
-
+            when {false}
         }
     }
 }
